@@ -1,0 +1,22 @@
+{
+  "name": "server_side_javascript",
+  "version": "1.0.0",
+  "description": "node test app ",
+  "main": "hello.js",
+  "scripts": {
+    "test": "ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Wislow/server_side_javascript.git"
+  },
+  "author": "june.hwang",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Wislow/server_side_javascript/issues"
+  },
+  "homepage": "https://github.com/Wislow/server_side_javascript#readme",
+  "dependencies": {
+    "underscore": "^1.8.3"
+  }
+}
