@@ -1,15 +1,36 @@
 var express = require('express');
 var app = express();
 
-// Á¤ÀûÆÄÀÏÀº public µğ·ºÅÍ¸® ¾Æ·¡ ÀÚ¿øµé·Î ¼­ºñ½ºÇÑ´Ù. 
+// ì •ì íŒŒì¼ì€ publicì•„ë˜ ìì›ìœ¼ë¡œ ì„œë¹„ìŠ¤í•¨.
 app.use(express.static('public'));
 
-// ¶ó¿ìÆÃ. / ·çÆ® µğ·ºÅÍ¸®·Î µé¾î¿Â ¿äÃ»À» Ã³¸®. 
+// ë¼ìš°í„°. ë£¨íŠ¸ ë””ë ‰í† ë¦¬ë¡œ ë“¤ì–´ì˜¨ ìš”ì²­ì— ëŒ€í•´ ì²˜ë¦¬.
 app.get('/', function (req, res) {
   res.send('Hello World!');
 });
 
-// Æ÷Æ®ÁöÁ¤
+// ë™ì ìœ¼ë¡œ html ì½”ë“œë¥¼ ìƒì„±í•˜ì—¬ ì„œë¹„ìŠ¤.
+app.get('/dynamic', function (req, res) {
+var time = Date();
+  var list = '';
+  for (var i=0 ; i<10 ; i++) {
+    list += '<li>'+i+'. Line</li>';
+  }
+
+  var output = `
+  <!DOCTYPE html>
+  <html>
+  <head>hi welcome</head>
+  <body>
+  Hello guys!! It's ${time} right now...
+  <ul>${list}</ul>
+  </body>
+  </html>`;
+
+  res.send(output);
+});
+
+// í¬íŠ¸ì„¤ì • 
 app.listen(4000, function () {
   console.log('Example app listening on port 4000!');
 });
