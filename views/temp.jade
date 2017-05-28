@@ -1,0 +1,11 @@
+html(lang="ko")
+  head
+    title= pageTitle
+    script(type='text/javascript').
+      alert('hey !! ');
+  body
+    h1  Hi guys~ I'm jiyoon. I'm testing jade or pug template engine.
+    ul
+      -for (var i=0 ; i<10 ; i++)
+        li for loop sentence.
+    div= time
