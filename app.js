@@ -10,6 +10,27 @@ app.set('view engine', 'jade');
 // 템플릿 파일은 ./views 하위 디렉토리의 자원들로 서비스함.
 app.set('views', './views');
 
+// 파라미터에 따른 처리.
+app.get('/topic', function(req, res) {
+  var id = req.query.id;
+  var qe1 = req.query.qe.a;
+  var qe2 = req.query.qe.b;
+  res.send('id : ' + id + '\nQe1 : ' + qe1 + ', Qe2: ' + qe2);
+});
+
+app.get('/param', function(req, res) {
+  var array = ['안녕하세요.', '구름빵이 먹고싶네요.', '늦은밤에 스터디하니 씐이 나네요.'];
+  var links = `
+    <a href="/param?id=0"/>인사</a><br>
+    <a href="/param?id=1"/>뭐가 먹고싶게?</a><br>
+    <a href="/param?id=2"/>나의 기분은?</a><hr>
+    ${array[req.query.id]}
+  `
+
+  res.send(links);
+});
+// ============ 파라미터 테스트 끝
+
 // 정적파일은 public아래 자원으로 서비스함.
 app.use(express.static('public'));
 
