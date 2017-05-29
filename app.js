@@ -29,6 +29,11 @@ app.get('/param', function(req, res) {
 
   res.send(links);
 });
+
+// parameter를 symentic url 형태로 보내서 받을 수 있지만, 정의한 위치에 파라미터가 전달되지 않으면 바로 에러.
+app.get('/dynamicParams/:param/:id', function(req, res) {
+  res.send(req.params.param + ", " + req.params.id);
+});
 // ============ 파라미터 테스트 끝
 
 // 정적파일은 public아래 자원으로 서비스함.
