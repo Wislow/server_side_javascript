@@ -4,7 +4,8 @@ html
     meta(charset='utf-8')
   title new topics
   body
-    h1 Server Side Javascript
+    h1
+      a(href='/topic') Server Side Javascript
     ul
       each topic in topics
         li
@@ -12,3 +13,6 @@ html
     article
       h2= title
       div= description
+    hr
+    div
+     a(href='/topic/new') 새로운 파일 생성하기

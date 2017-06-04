@@ -10,25 +10,25 @@ app.set('veiws', '/views');
 app.set('view engine', 'jade');
 
 app.get('/topic/new', function(req, res) {
-  res.render('new');
-});
-
-app.get('/topic', function(req, res) {
   fs.readdir('data', function(err, files) {
     if (err) throw err;
-    res.render('list', {topics: files});
+    res.render('new', {topics: files});
   });
 });
 
-app.get('/topic/:id', function(req, res) {
-  var id = req.params.id;
-
+app.get(['/topic', '/topic/:id'], function(req, res) {
   fs.readdir('data', function(err, files) {
     if (err) throw err;
-    fs.readFile('data/'+id, 'utf8', function(err, data) {
-      if (err) throw err;
-      res.render('list', {topics: files, title: id, description : data});
-    });
+
+    var id = req.params.id;
+    if (id) {
+      fs.readFile('data/'+id, 'utf8', function(err, data) {
+        if (err) throw err;
+        res.render('list', {topics: files, title: id, description : data});
+      });
+    } else {
+      res.render('list', {topics: files, title: 'Hi!', description : 'welcome~'});
+    }
   });
 });
 
@@ -40,7 +40,7 @@ app.post('/topic', function(req, res) {
        res.status(500).send('Internal Server Error');
      }
      // if success,
-    res.send(title + ' file is saved.');
+    res.redirect('/topic/' + title);
    });
 });
 
