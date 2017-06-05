@@ -37,7 +37,8 @@ app.get('/dynamicParams/:param/:id', function(req, res) {
 // ============ 파라미터 테스트 끝
 
 // 정적파일은 public아래 자원으로 서비스함.
-app.use(express.static('public'));
+var publicPath = path.resolve('public');
+app.use(express.static(publicPath));
 
 // template engine을 활용한 서비스페이지 라우팅.
 app.get('/template', function(req, res) {

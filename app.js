@@ -1,18 +1,21 @@
 var express = require('express');
 var app = express();
-var randomInt = require('./random-integer');
 
 app.locals.pretty=true
 
 app.set('views', './views')
 app.set('view engine', 'jade')
 
+/* custom module test
+var randomInt = require('./random-integer');
+
 console.log(randomInt());
 console.log(randomInt());
 console.log(randomInt());
 console.log(randomInt());
 console.log(randomInt());
 console.log(randomInt());
+*/
 
 app.get('/topic/new', function(req, res) {
   res.render('topic')

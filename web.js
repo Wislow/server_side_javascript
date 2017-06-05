@@ -1,6 +1,7 @@
 var express = require('express');
 var app = express();
 var fs = require('fs');
+var logger = require('morgan');
 var bodyParser = require('body-parser')
 var urlencodedParser = bodyParser.urlencoded({ extended: false })
 app.use(urlencodedParser);
@@ -8,6 +9,9 @@ app.use(urlencodedParser);
 app.locals.pretty=true;
 app.set('veiws', '/views');
 app.set('view engine', 'jade');
+
+// morgan module을 이용한 logger
+app.use(logger('short'));
 
 app.get('/topic/new', function(req, res) {
   fs.readdir('data', function(err, files) {
