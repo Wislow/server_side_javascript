@@ -22,6 +22,7 @@
     "express": "^4.15.3",
     "jade": "^1.11.0",
     "morgan": "^1.8.2",
+    "repeatjoinstring": "^1.0.2",
     "supervisor": "^0.12.0",
     "underscore": "^1.8.3"
   }

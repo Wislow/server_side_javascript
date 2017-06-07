@@ -6,6 +6,9 @@ app.locals.pretty=true
 app.set('views', './views')
 app.set('view engine', 'jade')
 
+var rjs = require('repeatJoinString');
+console.log(rjs("a", ".", 3));
+
 /* custom module test
 var randomInt = require('./random-integer');
 
