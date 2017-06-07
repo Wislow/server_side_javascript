@@ -2,9 +2,11 @@ var express = require('express');
 var app = express();
 var fs = require('fs');
 var logger = require('morgan');
-var bodyParser = require('body-parser')
-var urlencodedParser = bodyParser.urlencoded({ extended: false })
+var bodyParser = require('body-parser');
+var urlencodedParser = bodyParser.urlencoded({ extended: false });
 app.use(urlencodedParser);
+
+var path = require('path');
 
 app.locals.pretty=true;
 app.set('veiws', '/views');
@@ -12,6 +14,12 @@ app.set('view engine', 'jade');
 
 // morgan module을 이용한 logger
 app.use(logger('short'));
+
+// 굳이 path.resolve 를 사용하여 경로를 지정하는 이유는, mac, window 등은 디렉토리 구분자가 서로 다르기 때문에, 
+// path module을 사용하여 서로 다른 환경에서 코드가 돌아갈 때 발생할 수 있는 문제를 미연에 방지하고자 함이다.
+
+var publicPath = path.resolve('./public');
+app.use(express.static(publicPath));
 
 app.get('/topic/new', function(req, res) {
   fs.readdir('data', function(err, files) {
